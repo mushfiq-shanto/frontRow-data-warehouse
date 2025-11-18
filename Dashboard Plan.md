@@ -10,7 +10,7 @@ The standard pricing is **$5 for regular game tickets** and **$10 for playoff ga
 
 Historical data from the previous 4 completed seasons show that, on average **20% to 30% of seats are empty for regular games**, while playoff tickets consistently sell out. Further analysis revealed that the audience includes a set of **dedicated fans** who typically purchase tickets for on average **4 of their favourite team's 7 regular games**.
 
-To address this persistent capacity gap and better monetize these loyal customers, management theorized that offering a **Team-level Season Pass for $28** (a unit cost of $\mathbf{\$4}$ per game, providing a **$1 discount**) would incentivize dedicated fans to purchase the full bundle. This move is hypothesized to increase each dedicated customer's seasonal **GMV by $8** by effectively recovering a portion of the previously unsold 20% to 30% occupancy gap in regular games.
+To address this persistent capacity gap and better monetize these loyal customers, management theorized that offering a **Team-level Season Pass for $28** (a unit cost of $4 per game, providing a **$1 discount**) would incentivize dedicated fans to purchase the full bundle. This move is hypothesized to increase each dedicated customer's seasonal **GMV by $8** by effectively recovering a portion of the previously unsold 20% to 30% occupancy gap in regular games.
 
 ### **Management Objective**
 
@@ -38,17 +38,6 @@ The hypothesis is that the Season Pass targets the **existing dedicated audience
     * Total Regular Season GMV
     * Average GMV per Match
     * Average GMV per Unique Customer
-
-##### Match-by-Match GMV Performance (Line Chart)
-* **Purpose:** Tracks revenue generation over time and identifies the timing of the financial surplus.
-* **Content:** Two lines plotted against the chronological match sequence:
-    * Current Season Match GMV (Actual value)
-    * Past 4 Season Average Match GMV (Baseline)
-
-##### Season Pass ROI (Card Visual)
-* **Purpose:** A single figure summarizing the financial efficiency of the initiative.
-* **Content:** Displays the ROI percentage.
-    * *Calculation: Net GMV Gain (Current GMV minus Historical Average GMV) divided by the Total Estimated Lost Margin (from Q4).*
 
 #### **Required Aggregated Tables**
 
@@ -84,20 +73,16 @@ The core measurement is the change in the **Average Occupancy Percentage** for r
 
 #### **Ideal Visualizations**
 
-##### Average Regular Game Occupancy (Bar Chart / Gauge)
+##### Average Regular Game Occupancy
 * **Purpose:** Provides a clear comparison of attendance efficiency.
 * **Content:** A visual comparing:
     * Current Season Average Occupancy Percentage
     * Past 4 Season Average Occupancy Percentage
 
-##### Empty Seat Recovery (Card Visual)
+##### Empty Seat Recovery
 * **Purpose:** Highlights the operational impact in a single, quantifiable figure.
 * **Content:** Displays the calculated Empty Seat Recovery Percentage.
     * *Calculation: (Current Avg Occupancy - Past Avg Occupancy) divided by (100% - Past Avg Occupancy).*
-
-##### Match-by-Match Occupancy Trend (Line Chart)
-* **Purpose:** Shows the consistency of attendance improvement across the season.
-* **Content:** Plots the Occupancy Percentage for every match played in the current season.
 
 #### **Required Aggregated Tables**
 
@@ -124,13 +109,13 @@ This assesses the success of the Season Pass in reaching its target market (dedi
 
 #### **Ideal Visualizations**
 
-##### Dedicated Fan Penetration Rate (Donut Chart)
+##### Dedicated Fan Penetration Rate
 * **Purpose:** Shows the adoption success within the core target segment.
 * **Content:** Distribution of:
     * Percentage of Dedicated Fans who bought the Pass
     * Percentage of Dedicated Fans who did not
 
-##### Overall Audience Adoption (Donut Chart)
+##### Overall Audience Adoption
 * **Purpose:** Shows the overall market penetration of the product.
 * **Content:** Distribution of the Total Unique Audience:
     * Percentage who bought the Pass
@@ -143,36 +128,7 @@ This assesses the success of the Season Pass in reaching its target market (dedi
 * **Key Columns:**
     * `Customer_ID`
     * `Total_Regular_Tickets_Purchased_Last_Season`
-    * `Is_Dedicated_Fan` (Boolean Flag for $\ge 4$ tickets)
-    * `Has_Season_Pass_Current_Season` (Boolean Flag)
+    * `Is_Dedicated_Fan`
+    * `Has_Season_Pass_Current_Season`
 
 ---
-
-### **Q4: How much has the Season Pass sales cannibalized on regular ticket sales?**
-
-This assesses the financial risk of margin sacrifice caused by discounting the tickets (full price $\$5$ vs. pass unit price $\$4$).
-
-#### **Metrics and Logic: Measuring Lost Margin**
-
-Cannibalization is the maximum potential margin lost on customers who would have bought single tickets at full price but chose the discounted pass instead. We quantify this by estimating the **Total Lost Margin** on Season Pass sales. We also track the **Cannibalization Quantity** (tickets) by comparing the current year's *single ticket sales only* against the historical total average.
-
-* **Key Metrics Required:** Estimated Lost Margin (Monetary Value) and Cannibalization Quantity (Tickets).
-
-#### **Ideal Visualizations**
-
-##### Estimated Lost Margin (Cannibalization) (Card Visual)
-* **Purpose:** Quantifies the maximum financial cost of the discount strategy.
-* **Content:** Displays the total monetary value of the lost margin.
-    * *Calculation: Total Season Passes Sold multiplied by 7 Games multiplied by the $\$1$ discount.*
-
-##### Single Ticket Sales Volume (Comparison Table)
-* **Purpose:** Contextualizes the lost margin by showing the ticket volume displacement.
-* **Content:** Compares:
-    * Current Season Single Tickets Sold (excluding pass units)
-    * Past 4 Season Average Total Tickets Sold
-
-#### **Required Aggregated Tables**
-
-##### T1. Season-Level Financials
-* **Purpose:** Reused from Q1 to extract total Season Pass sales for margin calculation.
-* **Key Columns:** (See Section 2.1.3.1)
